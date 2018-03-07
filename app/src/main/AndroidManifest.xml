@@ -1,0 +1,141 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.shhb.jpan.lz">
+
+    <!-- 访问网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!--View所需权限-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!--访问手机的状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!--往sdcard中写入数据的权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--在sdcard中创建/删除文件的权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <!-- 获取网络信息状态，如当前的网络连接是否有效 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 获取当前WiFi接入的状态以及WLAN热点的信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!--用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <!--用于获取手机卡信息-->
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <!--防止GooglePlay搜索不到本应用加的-->
+    <uses-feature android:glEsVersion="0x00020000" android:required="false" />
+
+
+    <application
+        android:name=".application.MainApplication"
+        android:hardwareAccelerated="true"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/welcomeTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="myapp" android:host="japan" android:pathPrefix="/openwith"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.BindingActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".activity.BannerActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".activity.PersonalActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".activity.TasksActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".activity.TasksItemActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".activity.ShareActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".activity.RedeemActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".activity.HelpActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".activity.WalletActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".activity.RedeemRecordsActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".activity.TaskFriendActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".activity.TaskRecordsActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <!--FaceBook配置（开始）-->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <provider android:authorities="com.facebook.app.FacebookContentProvider309247049454180"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@style/com_facebook_activity_theme"
+            android:label="@string/app_name"/>
+        <!--FaceBook配置（结束）-->
+
+        <!--监听网络是否连接上-->
+        <receiver android:name=".Tools.NetworkReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <!--高德配置（开始）-->
+        <!-- 设置key -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="8c0bc108020b0f4b1fbb54caf55dc2e7" />
+        <!-- 定位需要的服务 -->
+        <service android:name="com.amap.api.location.APSService" />
+        <!--高德配置（开始）-->
+
+    </application>
+
+</manifest>

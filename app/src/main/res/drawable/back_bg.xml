@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--按下的颜色-->
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="@color/bTransparent" />
+            <stroke android:width="0dp" android:color="@android:color/transparent" />
+            <corners
+                android:topLeftRadius="0dp"
+                android:topRightRadius="8dp"
+                android:bottomLeftRadius="0dp"
+                android:bottomRightRadius="8dp"/>
+        </shape>
+    </item>
+
+    <!--松开的颜色-->
+    <item android:state_enabled="false">
+        <shape>
+            <solid android:color="@android:color/transparent" />
+            <stroke android:width="0dp" android:color="@android:color/transparent" />
+            <corners
+                android:topLeftRadius="0dp"
+                android:topRightRadius="8dp"
+                android:bottomLeftRadius="0dp"
+                android:bottomRightRadius="8dp" />
+        </shape>
+    </item>
+
+    <!--默认的颜色-->
+    <item>
+        <shape>
+            <solid android:color="@android:color/transparent" />
+            <stroke android:width="0dp" android:color="@android:color/transparent" />
+            <corners
+                android:topLeftRadius="0dp"
+                android:topRightRadius="8dp"
+                android:bottomLeftRadius="0dp"
+                android:bottomRightRadius="8dp"/>
+        </shape>
+    </item>
+</selector>
